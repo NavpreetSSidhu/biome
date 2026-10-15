@@ -3358,6 +3358,11 @@ export interface Nursery {
 	 */
 	noVueVTextVHtmlOnComponent?: NoVueVTextVHtmlOnComponentConfiguration;
 	/**
+	 * Disallow creating Vue watchers after an await in setup().
+	 * See https://biomejs.dev/linter/rules/no-vue-watch-after-await
+	 */
+	noVueWatchAfterAwait?: NoVueWatchAfterAwaitConfiguration;
+	/**
 	 * Disallow the bitwise XOR operator where exponentiation was likely intended.
 	 * See https://biomejs.dev/linter/rules/no-xor-as-exponentiation
 	 */
@@ -6054,6 +6059,9 @@ export type NoVueVTextConfiguration =
 export type NoVueVTextVHtmlOnComponentConfiguration =
 	| RulePlainConfiguration
 	| RuleWithNoVueVTextVHtmlOnComponentOptions;
+export type NoVueWatchAfterAwaitConfiguration =
+	| RulePlainConfiguration
+	| RuleWithNoVueWatchAfterAwaitOptions;
 export type NoXorAsExponentiationConfiguration =
 	| RulePlainConfiguration
 	| RuleWithNoXorAsExponentiationOptions;
@@ -8713,6 +8721,10 @@ export interface RuleWithNoVueVTextVHtmlOnComponentOptions {
 	level: RulePlainConfiguration;
 	options?: NoVueVTextVHtmlOnComponentOptions;
 }
+export interface RuleWithNoVueWatchAfterAwaitOptions {
+	level: RulePlainConfiguration;
+	options?: NoVueWatchAfterAwaitOptions;
+}
 export interface RuleWithNoXorAsExponentiationOptions {
 	/**
 	 * Controls the applicability of the rule's fix. `none` suppresses the fix, while `safe` and `unsafe` reclassify its applicability. This setting does not change the fix itself.
@@ -11202,6 +11214,7 @@ export type NoVueUnusedEmitDeclarationsOptions = {};
 export type NoVueVHtmlOptions = {};
 export type NoVueVTextOptions = {};
 export type NoVueVTextVHtmlOnComponentOptions = {};
+export type NoVueWatchAfterAwaitOptions = {};
 export type NoXorAsExponentiationOptions = {};
 export type NoZeroFractionsOptions = {};
 export type NoZeroLengthUnitOptions = {};
@@ -12950,6 +12963,7 @@ export type Category =
 	| "lint/nursery/noVueVOnNumberValues"
 	| "lint/nursery/noVueVText"
 	| "lint/nursery/noVueVTextVHtmlOnComponent"
+	| "lint/nursery/noVueWatchAfterAwait"
 	| "lint/nursery/noXorAsExponentiation"
 	| "lint/nursery/noZeroFractions"
 	| "lint/nursery/noZeroLengthUnit"
